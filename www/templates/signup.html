@@ -1,0 +1,32 @@
+<ion-view view-title="Login">
+  <ion-content>
+
+    <div class="card" ng-show="errorMessage">
+      <div class="item item-text-wrap">
+        {{errorMessage}}
+      </div>
+    </div>
+
+    <form ng-submit="doSignup()">
+      <div class="list">
+
+	      <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="signupData.email">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="signupData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="signupData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Log in</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

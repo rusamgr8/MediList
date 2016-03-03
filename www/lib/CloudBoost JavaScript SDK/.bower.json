@@ -1,0 +1,30 @@
+{
+  "name": "CloudBoost JavaScript SDK",
+  "homepage": "https://github.com/CloudBoost/JavaScriptSDK",
+  "authors": [
+    "Vipul Maheshwari <vipul@uohyd.ac.in>"
+  ],
+  "description": "This is the JavaScript SDK of CloudBoost",
+  "main": "dist/CloudBoost.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "e8725cbdb9",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e8725cbdb9ee8f6eaa49700d9d04677038f9cfdc"
+  },
+  "_source": "git://github.com/CloudBoost/JavaScriptSDK.git",
+  "_target": "*",
+  "_originalSource": "cloudboost",
+  "_direct": true
+}
