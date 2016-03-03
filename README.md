@@ -13,7 +13,7 @@ cd cloudboost-starter-ionic
 ```
 4. Please replace the CloudBoost keys in your `www/js/app.js` with your own keys:
 ```javascript
-CB.CloudApp.init('wlqeripyptqz', 'c1b5748d-1e84-4f72-96d0-f90f0222beac');
+CB.CloudApp.init('APP ID HERE', 'CLIENT KEY HERE');
 ```
 5. Then run npm to install dependencies:
 ```bash
