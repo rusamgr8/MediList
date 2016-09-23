@@ -1,32 +1,29 @@
-<ion-view view-title="Login">
-  <ion-content>
-
-    <div class="card" ng-show="errorMessage">
-      <div class="item item-text-wrap">
-        {{errorMessage}}
-      </div>
-    </div>
-
-    <form ng-submit="doSignup()">
-      <div class="list">
-
-	      <label class="item item-input">
-          <span class="input-label">Email</span>
-          <input type="email" ng-model="signupData.email">
-        </label>
-
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="signupData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="signupData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-        </label>
-      </div>
-    </form>
-  </ion-content>
+<ion-view title="Signup" id="page6" ng-controller="signupCtrl">
+    <ion-content padding="true" class="has-header">
+        <form id="signup-form1" role="form" class="list" ng-submit="signup()">
+            <ion-list id="signup-list1">
+                <label class="item item-input" id="signup-input1">
+                    <span class="input-label">Name</span>
+                    <input ng-model="user.name" type="text" placeholder="">
+                </label>
+                <label class="item item-input" id="signup-input2">
+                    <span class="input-label">Username</span>
+                    <input ng-model="user.username" type="text" placeholder="">
+                </label>
+                <label class="item item-input" id="signup-input3">
+                    <span class="input-label">Password</span>
+                    <input ng-model="user.password" type="password" placeholder="">
+                </label>
+                <label class="item item-input" id="signup-input3">
+                    <span class="input-label">email</span>
+                    <input ng-model="user.email" type="email" placeholder="">
+                </label>
+                <label class="item item-input" id="signup-input3">
+                    <span class="input-label">Mobile Number</span>
+                    <input ng-model="user.phoneNumber" type="number" placeholder="">
+                </label>
+            </ion-list>
+            <button id="signup-button1" class="button button-stable  button-block" ng-click="signup()">Sign up</button>
+        </form>
+    </ion-content>
 </ion-view>
