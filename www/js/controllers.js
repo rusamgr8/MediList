@@ -49,7 +49,7 @@ function ($scope, $stateParams , UserService ,$rootScope, $state) {
     UserService.login($scope.user)
     .then(function(user){
       $rootScope.currentUser = user;
-      $state.go('tabsController.mediList')
+      $state.go('tabsController.mediList');
     },function(err)
     {
       console.log("not a great choice")

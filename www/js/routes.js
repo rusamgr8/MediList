@@ -1,6 +1,6 @@
-angular.module('app.routes', ['ionicUIRouter','ui.router'])
+angular.module('app.routes', ['ionicUIRouter'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -47,21 +47,37 @@ angular.module('app.routes', ['ionicUIRouter','ui.router'])
   })
 
   .state('tabsController', {
-    url: '/homepage',
+    url: '/tabs',
     templateUrl: 'templates/tabsController.html',
     abstract:true
   })
 
-  .state('signup', {
+  .state('tabsController.signup', {
     url: '/signup',
     templateUrl: 'templates/signup.html',
     controller: 'signupCtrl'
   })
 
-  .state('login', {
+  .state('tabsController.login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
+    views:{
+      'tab1': {
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
+      },
+      'tab2': {
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
+      },
+      'tab3': {
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
+      },
+      'tab4': {
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
+      },
+    }
   })
 
   .state('tabsController.selectPerson', {
@@ -146,7 +162,7 @@ angular.module('app.routes', ['ionicUIRouter','ui.router'])
     controller: 'medicalStoresCtrl'
   })
 
-$urlRouterProvider.otherwise('/homepage/tab1/homepage')
+//$urlRouterProvider.otherwise('/tabs/tab1/homepage')
 
   
 
