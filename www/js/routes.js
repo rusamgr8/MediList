@@ -9,6 +9,7 @@ angular.module('app.routes', ['ionicUIRouter'])
   $stateProvider
   .state('tabsController.addPerson', {
     url: '/person/add',
+    cache : false,
     views: {
       
       'tab3': {
@@ -20,6 +21,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('tabsController.createMediLIst', {
     url: '/medilist/create',
+    cache : false,
     views: {
       'tab2': {
         templateUrl: 'templates/createMediLIst.html',
@@ -30,16 +32,9 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('tabsController.mediList', {
     url: '/homepage',
+    cache : false,
     views: {
       'tab1': {
-        templateUrl: 'templates/mediList.html',
-        controller: 'mediListCtrl'
-      },
-      'tab2': {
-        templateUrl: 'templates/mediList.html',
-        controller: 'mediListCtrl'
-      },
-      'tab3': {
         templateUrl: 'templates/mediList.html',
         controller: 'mediListCtrl'
       }
@@ -48,20 +43,27 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('tabsController', {
     url: '/tabs',
+    cache: false,
     templateUrl: 'templates/tabsController.html',
     abstract:true
   })
 
   .state('tabsController.signup', {
     url: '/signup',
-    templateUrl: 'templates/signup.html',
-    controller: 'signupCtrl'
+    cache: false,
+    views:{
+      'tab4': {
+        templateUrl: 'templates/signup.html',
+        controller: 'signupCtrl'
+      }
+    }
   })
 
   .state('tabsController.login', {
     url: '/login',
+    cache : false,
     views:{
-      'tab1': {
+      'tab4': {
         templateUrl: 'templates/login.html',
         controller: 'loginCtrl'
       }
@@ -80,16 +82,9 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('tabsController.editMediList', {
     url: '/medilist/edit',
+    cache: false,
     views: {
       'tab1': {
-        templateUrl: 'templates/editMediList.html',
-        controller: 'editMediListCtrl'
-      },
-      'tab2': {
-        templateUrl: 'templates/editMediList.html',
-        controller: 'editMediListCtrl'
-      },
-      'tab3': {
         templateUrl: 'templates/editMediList.html',
         controller: 'editMediListCtrl'
       }
@@ -98,16 +93,9 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('tabsController.editMedicine', {
     url: '/medilist/edit/medicine',
+    cache: false,
     views: {
       'tab1': {
-        templateUrl: 'templates/editMedicine.html',
-        controller: 'editMedicineCtrl'
-      },
-      'tab2': {
-        templateUrl: 'templates/editMedicine.html',
-        controller: 'editMedicineCtrl'
-      },
-      'tab3': {
         templateUrl: 'templates/editMedicine.html',
         controller: 'editMedicineCtrl'
       }
@@ -116,6 +104,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('tabsController.profile', {
     url: '/profile',
+    cache : false,
     views: {
       'tab4': {
         templateUrl: 'templates/profile.html',

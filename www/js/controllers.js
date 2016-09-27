@@ -1,26 +1,50 @@
 angular.module('app.controllers', [])
   
-.controller('addPersonCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('addPersonCtrl', ['$scope', '$stateParams','$state', '$rootScope', 'PersonService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams,$state,$rootScope,PersonService) {
+  if (!CB.CloudUser.current) {
+    console.log("user not logged in");
+    $rootScope.currentUser = "";
+    $state.go('tabsController.login');
+  }
 
+  $scope.person = {};
+
+  $scope.addPerson = function(){
+    $scope.person.requestors = [$rootScope.currentUser];
+    console.log($scope.person);
+    PersonService.addPerson($scope.person)
+    .then(function(person){
+      console.log("person added: "+person);
+    },function(error){
+      console.log("")
+    })
+  }
+}])
+   
+.controller('createMediLIstCtrl', ['$scope', '$stateParams','$rootScope','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $rootScope, $state) {
+  if (!CB.CloudUser.current) {
+    console.log("user not logged in");
+    $rootScope.currentUser = "";
+    $state.go('tabsController.login');
+  }
 
 }])
    
-.controller('createMediLIstCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('mediListCtrl', ['$scope', '$stateParams', '$state','$rootScope',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('mediListCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
+function ($scope, $stateParams,$state,$rootScope) {
+  if (!CB.CloudUser.current) {
+    console.log("user not logged in");
+    $rootScope.currentUser = "";
+    $state.go('tabsController.login');
+  }
 
 }])
       
@@ -29,6 +53,17 @@ function ($scope, $stateParams) {
 	console.log("coming inside");
 	$scope.signup = function(){
       console.log('coming inside signup');
+      // If user is logged in already, redirect them.
+      if (CB.CloudUser.current) {
+        $rootScope.currentUser = CB.CloudUser.current;
+        $state.go("tabsController.mediList");
+        $scope.$apply();
+      }
+
+      // DISABLE back button - IMPORTANT!!!!!
+      $ionicHistory.nextViewOptions({
+        disableBack: true
+      });
       console.log($scope.user);
       UserService.signup($scope.user)
     	.then(function(){
@@ -40,13 +75,13 @@ function ($scope, $stateParams) {
     };
 }])
    
-.controller('loginCtrl', ['$scope', '$stateParams', 'UserService', '$rootScope', '$state',
-function ($scope, $stateParams , UserService ,$rootScope, $state) {
+.controller('loginCtrl', ['$scope', '$stateParams', 'UserService', '$rootScope', '$state','$ionicHistory',
+function ($scope, $stateParams , UserService ,$rootScope, $state,$ionicHistory) {
 	console.log("coming inside");
   // If user is logged in already, redirect them.
   if (CB.CloudUser.current) {
     $rootScope.currentUser = CB.CloudUser.current;
-    $state.go("tabsController.mediList");
+    $state.go("tabsController.profile");
   } else {
     $rootScope.currentUser = "";
   }
@@ -60,6 +95,7 @@ function ($scope, $stateParams , UserService ,$rootScope, $state) {
     UserService.login($scope.user)
     .then(function(user){
       $rootScope.currentUser = user;
+      $rootScope.$broadcast('user:updated');
       $state.go('tabsController.mediList');
     },function(err)
     {
@@ -93,10 +129,19 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('profileCtrl', ['$scope', '$stateParams', '$ionicHistory','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('profileCtrl', ['$scope', '$stateParams', '$ionicHistory','$state', '$rootScope', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams,$ionicHistory,$state) {
+// If user is NOT logged in.
+  
+
+function ($scope, $stateParams,$ionicHistory,$state,$rootScope) {
+
+  if (!CB.CloudUser.current) {
+    console.log("user not logged in");
+    $rootScope.currentUser = "";
+    $state.go('tabsController.login');
+  }
   $scope.logout = function () {
     CB.CloudUser.current.logOut({
       success: function(user) {

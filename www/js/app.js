@@ -37,7 +37,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       });
   };
 
-  $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
+  /*$rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
     // if route requires auth and user is not logged in
     console.log($location.url() + "   "+ UserService.isLoggedIn() );
     if (!routeClean($location.url()) && !UserService.isLoggedIn()) {
@@ -47,8 +47,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     /*else if (routeAdmin($location.url() && !UserService.validateRoleAdmin())) {
       // redirect to error page
       $location.path('/error');
-    }*/
-  });
+    }
+  });*/
   });
 
   
