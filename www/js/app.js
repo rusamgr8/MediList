@@ -42,7 +42,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     console.log($location.url() + "   "+ UserService.isLoggedIn() );
     if (!routeClean($location.url()) && !UserService.isLoggedIn()) {
       // redirect back to login
-      $location.path('/login');
+      $location.path('/tabs/login');
     }
     /*else if (routeAdmin($location.url() && !UserService.validateRoleAdmin())) {
       // redirect to error page

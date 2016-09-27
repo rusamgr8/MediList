@@ -43,6 +43,17 @@ function ($scope, $stateParams) {
 .controller('loginCtrl', ['$scope', '$stateParams', 'UserService', '$rootScope', '$state',
 function ($scope, $stateParams , UserService ,$rootScope, $state) {
 	console.log("coming inside");
+  // If user is logged in already, redirect them.
+  if (CB.CloudUser.current) {
+    $rootScope.currentUser = CB.CloudUser.current;
+    $state.go("tabsController.mediList");
+  } else {
+    $rootScope.currentUser = "";
+  }
+  // DISABLE back button - IMPORTANT!!!!!
+  $ionicHistory.nextViewOptions({
+    disableBack: true
+  });
 	$scope.user ={};
 	$scope.login = function() {
     console.log($scope.user);
@@ -82,11 +93,31 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('profileCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('profileCtrl', ['$scope', '$stateParams', '$ionicHistory','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
+function ($scope, $stateParams,$ionicHistory,$state) {
+  $scope.logout = function () {
+    CB.CloudUser.current.logOut({
+      success: function(user) {
+        //log out successfull
+        $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+        $ionicHistory.nextViewOptions({
+          disableBack: true,
+          historyRoot: true
+        });
+        $state.go('tabsController.login');
+        $scope.currentUser = CB.CloudUser.current;
+        $scope.$apply();
+      },
+      error: function(err) {
+        console.log(err);
+        //Error occured in user logout
+        $state.go("tabsController.login");
+      }
+    });
+  }
 
 }])
    

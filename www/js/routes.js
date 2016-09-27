@@ -64,19 +64,7 @@ angular.module('app.routes', ['ionicUIRouter'])
       'tab1': {
         templateUrl: 'templates/login.html',
         controller: 'loginCtrl'
-      },
-      'tab2': {
-        templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
-      },
-      'tab3': {
-        templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
-      },
-      'tab4': {
-        templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
-      },
+      }
     }
   })
 
