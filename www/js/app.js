@@ -28,7 +28,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     }
     var routesThatDontRequireAuth = ['/login'];
 
-  // check if current location matches route  
+  // check if current location matches route
   var routeClean = function (route) {
     console.log("routeClean called");
     return _.find(routesThatDontRequireAuth,
@@ -51,5 +51,5 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
   });*/
   });
 
-  
+
 }])

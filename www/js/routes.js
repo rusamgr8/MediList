@@ -7,130 +7,104 @@ angular.module('app.routes', ['ionicUIRouter'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-  .state('tabsController.addPerson', {
+  .state('addPerson', {
     url: '/person/add',
     cache : false,
-    views: {
-      
-      'tab3': {
+
         templateUrl: 'templates/addPerson.html',
         controller: 'addPersonCtrl'
-      }
-    }
-  })
 
-  .state('tabsController.createMediLIst', {
+  })
+  .state('person',{
+    url: '/person/:personId',
+    cache: false,
+
+        templateUrl: 'templates/person.html',
+        controller: 'personCtrl'
+
+  })
+  .state('createMediLIst', {
     url: '/medilist/create',
     cache : false,
-    views: {
-      'tab2': {
+
         templateUrl: 'templates/createMediLIst.html',
         controller: 'createMediLIstCtrl'
-      }
-    }
+
   })
 
-  .state('tabsController.mediList', {
+  .state('mediList', {
     url: '/homepage',
     cache : false,
-    views: {
-      'tab1': {
-        templateUrl: 'templates/mediList.html',
-        controller: 'mediListCtrl'
-      }
-    }
+    templateUrl: 'templates/mediList.html',
+    controller: 'mediListCtrl'
+
   })
 
-  .state('tabsController', {
-    url: '/tabs',
-    cache: false,
-    templateUrl: 'templates/tabsController.html',
-    abstract:true
-  })
 
-  .state('tabsController.signup', {
+  .state('signup', {
     url: '/signup',
     cache: false,
-    views:{
-      'tab4': {
-        templateUrl: 'templates/signup.html',
-        controller: 'signupCtrl'
-      }
-    }
+    templateUrl: 'templates/signup.html',
+    controller: 'signupCtrl'
   })
 
-  .state('tabsController.login', {
+  .state('login', {
     url: '/login',
     cache : false,
-    views:{
-      'tab4': {
-        templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
-      }
-    }
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
+
   })
 
-  .state('tabsController.selectPerson', {
+  .state('selectPerson', {
     url: '/person/select',
-    views: {
-      'tab2': {
+
         templateUrl: 'templates/selectPerson.html',
         controller: 'selectPersonCtrl'
-      }
-    }
+
   })
 
-  .state('tabsController.editMediList', {
+  .state('editMediList', {
     url: '/medilist/edit',
     cache: false,
-    views: {
-      'tab1': {
+
         templateUrl: 'templates/editMediList.html',
         controller: 'editMediListCtrl'
-      }
-    }
+
   })
 
-  .state('tabsController.editMedicine', {
+  .state('editMedicine', {
     url: '/medilist/edit/medicine',
     cache: false,
-    views: {
-      'tab1': {
+
         templateUrl: 'templates/editMedicine.html',
         controller: 'editMedicineCtrl'
-      }
-    }
+
   })
 
-  .state('tabsController.profile', {
+  .state('profile', {
     url: '/profile',
     cache : false,
-    views: {
-      'tab4': {
+
         templateUrl: 'templates/profile.html',
         controller: 'profileCtrl'
-      }
-    }
+
   })
 
-  .state('tabsController.changePassword', {
+  .state('changePassword', {
     url: '/profile/edit/password',
-    views: {
-      'tab4': {
+
         templateUrl: 'templates/changePassword.html',
         controller: 'changePasswordCtrl'
-      }
-    }
+
   })
 
-  .state('tabsController.editProfile', {
+  .state('editProfile', {
     url: '/profile/edit',
-    views: {
-      'tab4': {
+
         templateUrl: 'templates/editProfile.html',
         controller: 'editProfileCtrl'
-      }
-    }
+    
   })
 
   .state('medicalStores', {
@@ -141,6 +115,6 @@ angular.module('app.routes', ['ionicUIRouter'])
 
 //$urlRouterProvider.otherwise('/tabs/tab1/homepage')
 
-  
+
 
 });
